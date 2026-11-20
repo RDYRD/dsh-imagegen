@@ -1,31 +1,32 @@
 # 图像生成（dsh-imagegen）
 
 把 [Seedream](https://www.volcengine.com/product/ark)（火山方舟 Ark）图像生成接进 DeepSeek Harness：
-在设置页配置 API 与用量，在输入框下方一键开关，模型即可在对话里直接出图。
+在设置页配置 API 与用量，在输入框工具行一键开关，模型即可在对话里直接出图。
 
 ## 它做什么
 
 - **生图工具**：`imagegen` 支持文生图、图生图、多图参考、批量出图（`n` 张），返回本地图片路径。
   模型只拿到路径与尺寸，不会把图片二进制塞进上下文。
 - **软开关**：打开后向模型注入「图像生成模式」上下文，模型看到用户描述画面的消息会直接出图；
-  关闭即消失。开关是全局的（所有会话共享一份），重启 DSH 后回到关闭。
+  关闭即消失。开关是全局的（所有会话共享一份），状态写进插件配置，重启 DSH 后保持关闭/开启。
 - **设置页**：默认模型、默认尺寸、输出目录、API Key、火山 AK/SK、余额与资源包/账单查询、连通性测试。
-- **状态胶囊**：输入框下方的 `🖼 生图 · 开 · seedream 5.5 ▾`，点一下开关，点模型名切模型。
+- **工具行控件**：输入框工具行里的 `🖼 生图 开` + `seedream 5.5 ▾`，与权限选择、模型选择同排；
+  点开关切换生图模式，点模型名临时切换出图模型。
 
 ## 安装
 
 ```bash
-# 在 DSH 里
-plugin_manager install_bundle <本地路径或 npm 包名>
+# 在 DSH 里，路径指向本仓库源码目录（不要指向 profile 的 node_modules 内部）
+plugin_manager install_bundle C:\path\to\dsh-imagegen
 ```
 
-或把本目录放进 `<profile>/node_modules/dsh-imagegen`，并在 profile 的 `cordis.patch.yml` 里加：
+也可以从 Git 直接装（pnpm 支持 git 依赖）：
 
-```yaml
-- id: tool-imagegen
-  name: dsh-imagegen
-  config: {}
+```bash
+plugin_manager install_bundle github:RDYRD/dsh-imagegen
 ```
+
+安装后组合行 id 是 `include:tool-imagegen`，用 `plugin_manager set_plugin` 启停。
 
 ## 配置
 
