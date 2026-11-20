@@ -1,0 +1,4 @@
+- insert:
+    - id: tool-imagegen
+      name: dsh-imagegen
+      config: {}
