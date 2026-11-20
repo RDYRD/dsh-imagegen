@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "图像生成",
+    "description": "把 Seedream（火山方舟）接进对话：设置页配置 API 与用量，输入框下方一键开关。",
+    "detail": "detail.md"
+  }
+}
