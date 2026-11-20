@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Image generation",
+    "description": "Seedream (Volcengine Ark) inside the chat: configure API keys and usage in Settings, toggle generation under the composer.",
+    "detail": "detail.md"
+  }
+}
